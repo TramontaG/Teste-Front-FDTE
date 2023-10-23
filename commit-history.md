@@ -18,3 +18,10 @@
 
     - Fixed typo in colors.json
     - Finished Landing Page styling
+
+# [10/23/2023: 16:00]
+
+    - Created scaffold of the PokeContext
+    - Created Ash Ketchum
+    - Created the side bar that holds the pokemons
+    - Created the ability to add random pokemons with the + button

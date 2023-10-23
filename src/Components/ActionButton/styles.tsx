@@ -10,6 +10,5 @@ export const StyledActionButton = styled.button`
   font-size: 1.25rem;
   font-weight: 600;
   text-transform: uppercase;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
 `;
