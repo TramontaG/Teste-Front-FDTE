@@ -11,5 +11,10 @@
 # [10/23/2023 15:54]
 
     - Fixed non-relative imports with better vite.config.ts configuration
-    - Added styleguide
+    - Added styleguide json for colors
     - Fixed junk warnings on console due to styled components acting weird
+
+# [10/23/2023 14:17]
+
+    - Fixed typo in colors.json
+    - Finished Landing Page styling

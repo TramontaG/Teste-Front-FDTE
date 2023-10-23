@@ -1,20 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { CenterContent } from "src/Components/CenterContent";
-import { BackgroundStyle } from "./styles";
+import { BackgroundStyle, PokeLogo } from "./styles";
+
+import { PokemonLogo } from "src/assets/images";
+import { ActionButton } from "src/Components/ActionButton";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
 
+  const goToHome = () => {
+    navigate("/home");
+  };
+
   return (
     <CenterContent style={BackgroundStyle}>
-      <h1>Landing Page</h1>
-      <button
-        onClick={() => {
-          navigate("/home");
-        }}
-      >
-        Start!
-      </button>
+      <PokeLogo src={PokemonLogo} />
+      <ActionButton onClick={goToHome}>Start!</ActionButton>
     </CenterContent>
   );
 };
