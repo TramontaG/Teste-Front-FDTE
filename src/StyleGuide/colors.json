@@ -6,7 +6,8 @@
   "primary": {
     "default": "rgba(0, 241, 143, 1)",
     "dark": "rgba(0, 74, 69, 1)",
-    "transparent": "rgba(0, 241, 143, 0.48)"
+    "transparent": "rgba(0, 241, 143, 0.48)",
+    "end_gradient": "rgba(56, 249, 214, 1)"
   },
   "action": {
     "default": "rgba(255, 61, 113, 1)",
@@ -17,7 +18,7 @@
     "bug": "rgba(135, 149, 12, 1)",
     "dark": "rgba(65, 56, 49, 1)",
     "dragon": "rgba(115, 97, 209, 1)",
-    "eletric": "rgba(224, 141, 0, 1)",
+    "electric": "rgba(224, 141, 0, 1)",
     "fairy": "rgba(226, 159, 230, 1)",
     "fighting": "rgba(119, 40, 22, 1)",
     "fire": "rgba(207, 44, 3, 1)",
@@ -46,6 +47,6 @@
     "1100": "rgba(16, 20, 38, 1)"
   },
   "modal_background": {
-    "default": "rgba(0, 0, 0, .35)"
+    "default": "rgba(0, 0, 0, 0.35)"
   }
 }

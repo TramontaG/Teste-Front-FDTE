@@ -1,9 +1,12 @@
 import { PropsWithChildren, useContext, useState } from "react";
 import { createContext } from "react";
 import { Pokemon } from "src/Models/Pokemon";
-
 export type PokeContextValue = {
   pokeList: Pokemon[];
+  currentPokemon: [
+    Pokemon | null,
+    React.Dispatch<React.SetStateAction<Pokemon | null>>
+  ];
   addPokemon: (pokemon: Pokemon) => void;
   removePokemon: (pokemon: Pokemon) => void;
 };
@@ -14,6 +17,7 @@ export type PokeContextProps = PropsWithChildren;
 
 const PokeContextProvider = ({ children }: PokeContextProps) => {
   const [pokeList, setPokeList] = useState<Pokemon[]>([]);
+  const currentPokemon = useState<Pokemon | null>(null);
 
   const addPokemon = (pokemon: Pokemon) => {
     if (pokeList.length >= 6) {
@@ -27,7 +31,14 @@ const PokeContextProvider = ({ children }: PokeContextProps) => {
   };
 
   return (
-    <_Context.Provider value={{ pokeList, addPokemon, removePokemon }}>
+    <_Context.Provider
+      value={{
+        pokeList,
+        addPokemon,
+        removePokemon,
+        currentPokemon,
+      }}
+    >
       {children}
     </_Context.Provider>
   );

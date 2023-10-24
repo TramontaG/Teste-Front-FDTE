@@ -8,13 +8,9 @@ export const CreatePokeApi = () => {
     });
 
     const getRandomPokemon = async () => {
-        try {
-            const randomID = getRandomIntBetween(1, 807);
-            const { data } = await PokeApi.get<Pokemon>(`/pokemon/${randomID}`);
-            return data;
-        } catch (e) {
-            console.warn(e);
-        }
+        const randomID = getRandomIntBetween(1, 807);
+        const { data } = await PokeApi.get<Pokemon>(`/pokemon/${randomID}`);
+        return data;
     }
 
     return {
