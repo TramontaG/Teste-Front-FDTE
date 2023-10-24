@@ -25,3 +25,10 @@
     - Created Ash Ketchum
     - Created the side bar that holds the pokemons
     - Created the ability to add random pokemons with the + button
+
+# [10/23/2023: 21:43]
+
+    - Created random pokemon capturing
+    - Created modal
+    - Made Ash's tooltips work
+    - Translating pokemon types and getting the correct color for the tags
