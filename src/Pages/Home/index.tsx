@@ -4,6 +4,7 @@ import { AshKetchum } from "./Components/AshKetchum";
 import { PokeContext } from "./Contexts/PokeContext";
 import { SideBar } from "./Components/Sidebar";
 import { PokeInfoModal } from "./Components/PokeInfoModal";
+import { CapturedPokemonInfoModal } from "./Components/CapturedPokeInfoModal";
 
 export const Home = () => {
   return (
@@ -11,6 +12,7 @@ export const Home = () => {
       <PokeContext.provider>
         <SideBar />
         <PokeInfoModal />
+        <CapturedPokemonInfoModal />
         <CenterContent style={HomeBackgroundImage}>
           <AshKetchum />
         </CenterContent>

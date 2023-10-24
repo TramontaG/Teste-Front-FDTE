@@ -11,7 +11,7 @@ const renderPokemon = (pokemon: Pokemon | undefined) => (
 );
 
 export const SideBar = () => {
-  const { addPokemon, pokeList, removePokemon } = PokeContext.useContext();
+  const { pokeList } = PokeContext.useContext();
 
   // Makes sure the array is always length 6, extending it with undefined values;
   const normalizedPokeList = pokeList

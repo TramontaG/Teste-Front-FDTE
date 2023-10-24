@@ -27,14 +27,10 @@ import PokeballImage from "src/assets/images/pokeball.png";
 import { Pokemon } from "src/Models/Pokemon";
 import { PokemonTypeTag } from "../PokemonTypeTag";
 import { ForEach } from "src/Components/ForEach";
-
-const getPokemonHp = (pokemon: Pokemon) => {
-  const hpStat = pokemon.stats.find((stat) => stat.stat.name === "hp")!;
-  return hpStat.base_stat;
-};
+import { getPokemonStat } from "src/utils";
 
 /**
- * If the pokemon is undefined, the modal is set to closed.
+ * If the currentPokemon is undefined, the modal is set to closed.
  */
 export const PokeInfoModal = () => {
   const {
@@ -79,8 +75,8 @@ export const PokeInfoModal = () => {
                 <div>
                   <Subitlte>HP</Subitlte>
                   <Title>
-                    {getPokemonHp(currentPokemon)}/
-                    {getPokemonHp(currentPokemon)}
+                    {getPokemonStat(currentPokemon, "hp")}/
+                    {getPokemonStat(currentPokemon, "hp")}
                   </Title>
                 </div>
                 <SideBorderedDiv>

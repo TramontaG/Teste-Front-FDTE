@@ -1,6 +1,7 @@
 import { Pokemon } from "src/Models/Pokemon";
 import { PokeSprite, PokemonContainer } from "./styles";
 import { CenterContent } from "src/Components/CenterContent";
+import { PokeContext } from "../../Contexts/PokeContext";
 
 type SidePokeDisplayProps = {
   pokemon: Pokemon | undefined;
@@ -15,8 +16,16 @@ export const SidePokeDisplay = ({ pokemon }: SidePokeDisplayProps) => {
 };
 
 export const PopulatedPokeDisplay = ({ pokemon }: { pokemon: Pokemon }) => {
+  const {
+    selectedPokemon: [selectedPokemon, setSelectedPokemon],
+  } = PokeContext.useContext();
+
+  const selectPokemon = () => {
+    setSelectedPokemon(pokemon!);
+  };
+
   return (
-    <PokemonContainer>
+    <PokemonContainer onClick={selectPokemon}>
       <PokeSprite src={pokemon.sprites.front_default} />
     </PokemonContainer>
   );

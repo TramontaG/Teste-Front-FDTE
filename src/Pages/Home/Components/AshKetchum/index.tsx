@@ -27,6 +27,7 @@ export const AshKetchum = () => {
   const [tooltipVariant, setTooltipVariant] = useState<ToolTipVariant>("None");
   const {
     currentPokemon: [, setCurrentPokemon],
+    pokeList,
   } = PokeContext.useContext();
 
   /**
@@ -39,11 +40,20 @@ export const AshKetchum = () => {
     if (tooltipVariant === "Loading") {
       return;
     }
+
+    if (pokeList.length >= 6 && tooltipVariant !== "Error") {
+      return setTooltipVariant("Error");
+    }
+
     setTooltipVariant(variant);
   };
 
   const onClickAsh = async () => {
     try {
+      if (pokeList.length >= 6) {
+        return setTooltipVariant("Error");
+      }
+
       setTooltipVariant("Loading");
       const randomPokemon = await PokemonApi.getRandomPokemon();
       setCurrentPokemon(randomPokemon);
