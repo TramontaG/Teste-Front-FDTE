@@ -33,7 +33,7 @@
     - Made Ash's tooltips work
     - Translating pokemon types and getting the correct color for the tags
 
-# [10/23/2023 23:12]
+# [10/23/2023 23:27]
 
     - Making so that Ash can't capture more than 6 pokemons
     - Created Modal that shows info for the captured pokemon
