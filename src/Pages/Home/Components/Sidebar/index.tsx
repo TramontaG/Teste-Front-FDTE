@@ -7,7 +7,7 @@ import { SideAddPokemon } from "../SideAddPokemon";
 
 // Declared outside the component to avoid having to recreate this function every render
 const renderPokemon = (pokemon: Pokemon | undefined) => (
-  <SidePokeDisplay pokemon={pokemon} />
+  <SidePokeDisplay key={pokemon?.id} pokemon={pokemon} />
 );
 
 export const SideBar = () => {

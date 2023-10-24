@@ -9,7 +9,6 @@ export type PokemonTypeTagProps = {
 };
 
 export const PokemonTypeTag = ({ type }: PokemonTypeTagProps) => {
-  console.log(type);
   if (!type) return null;
   const typeColor = Colors.types[type];
   const translatedType = PokemonTypes[type];

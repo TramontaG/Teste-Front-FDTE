@@ -163,5 +163,12 @@ export const StatTitleContainer = styled.div`
 
 export const StatIcon = styled.img`
   height: 100%;
-  width: auto;
+`;
+
+export const StatIconContainer = styled.div`
+  width: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

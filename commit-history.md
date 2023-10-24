@@ -37,3 +37,8 @@
 
     - Making so that Ash can't capture more than 6 pokemons
     - Created Modal that shows info for the captured pokemon
+
+# [10/24/2023 18:57]
+
+    - Added a feature that enables to update the name of a pokemon
+    - Fixed some small layout imperfections and misalignments

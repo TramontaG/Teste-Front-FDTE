@@ -13,6 +13,7 @@ export type PokeContextValue = {
   ];
   addPokemon: (pokemon: Pokemon) => void;
   removePokemon: (pokemon: Pokemon) => void;
+  editPokemon: (id: number, newData: Partial<Pokemon>) => void;
 };
 
 const _Context = createContext<PokeContextValue>(null!);
@@ -35,6 +36,20 @@ const PokeContextProvider = ({ children }: PokeContextProps) => {
     setPokeList((oldList) => oldList.filter((p) => p.id !== pokemon.id));
   };
 
+  const editPokemon = (id: number, newData: Partial<Pokemon>) => {
+    setPokeList((oldPokeList) =>
+      oldPokeList.map((pokemon) => {
+        if (pokemon.id === id) {
+          return {
+            ...pokemon,
+            ...newData,
+          };
+        }
+        return pokemon;
+      })
+    );
+  };
+
   return (
     <_Context.Provider
       value={{
@@ -43,6 +58,7 @@ const PokeContextProvider = ({ children }: PokeContextProps) => {
         removePokemon,
         currentPokemon,
         selectedPokemon,
+        editPokemon,
       }}
     >
       {children}

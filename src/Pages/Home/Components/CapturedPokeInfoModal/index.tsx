@@ -20,6 +20,7 @@ import {
   StatContainer,
   StatTitleContainer,
   StatIcon,
+  StatIconContainer,
 } from "./styles";
 import { CenterContent } from "src/Components/CenterContent";
 import { MouseEventHandler } from "react";
@@ -33,6 +34,7 @@ import { PokemonTypeTag } from "../PokemonTypeTag";
 import { ForEach } from "src/Components/ForEach";
 import { ActionButton } from "src/Components/ActionButton";
 import { getPokemonStat } from "src/utils";
+import { EditProperty } from "../EditStat";
 
 /**
  * If the selected pokemon is undefined, the modal is set to closed.
@@ -56,8 +58,6 @@ export const CapturedPokemonInfoModal = () => {
     closeModal();
   };
 
-  console.log(selectedPokemon);
-
   if (!selectedPokemon) {
     return null;
   }
@@ -77,7 +77,7 @@ export const CapturedPokemonInfoModal = () => {
             </PokemonSpriteHolder>
 
             <PokemonDataContainer>
-              <Title>{selectedPokemon.name}</Title>
+              <EditProperty property="name" />
               <HorizontalContainer>
                 <div>
                   <Subitlte>HP</Subitlte>
@@ -100,6 +100,7 @@ export const CapturedPokemonInfoModal = () => {
               <HorizontalContainer>
                 <HorizontalDivider />
                 <Title>Tipo</Title>
+
                 <HorizontalDivider />
               </HorizontalContainer>
 
@@ -133,7 +134,9 @@ export const CapturedPokemonInfoModal = () => {
 
               <StatContainer>
                 <StatTitleContainer>
-                  <StatIcon src={ShiledIcon} />
+                  <StatIconContainer>
+                    <StatIcon src={ShiledIcon} />
+                  </StatIconContainer>
                   <CapitalizedSubtitle>Defesa</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
@@ -143,7 +146,9 @@ export const CapturedPokemonInfoModal = () => {
 
               <StatContainer>
                 <StatTitleContainer>
-                  <StatIcon src={SwordIcon} />
+                  <StatIconContainer>
+                    <StatIcon src={SwordIcon} />
+                  </StatIconContainer>
                   <CapitalizedSubtitle>Ataque</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
@@ -153,7 +158,9 @@ export const CapturedPokemonInfoModal = () => {
 
               <StatContainer>
                 <StatTitleContainer>
-                  <StatIcon src={ShiledIcon} />
+                  <StatIconContainer>
+                    <StatIcon src={ShiledIcon} />
+                  </StatIconContainer>
                   <CapitalizedSubtitle>Defesa especial</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
@@ -163,7 +170,9 @@ export const CapturedPokemonInfoModal = () => {
 
               <StatContainer>
                 <StatTitleContainer>
-                  <StatIcon src={SwordIcon} />
+                  <StatIconContainer>
+                    <StatIcon src={SwordIcon} />
+                  </StatIconContainer>
                   <CapitalizedSubtitle>Ataque especial</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
@@ -173,21 +182,13 @@ export const CapturedPokemonInfoModal = () => {
 
               <StatContainer>
                 <StatTitleContainer>
-                  <StatIcon src={ShiledIcon} />
+                  <StatIconContainer>
+                    <StatIcon src={SpeedIcon} />
+                  </StatIconContainer>
                   <CapitalizedSubtitle>Velocidade</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
                   {getPokemonStat(selectedPokemon, "speed")}
-                </CapitalizedSubtitle>
-              </StatContainer>
-
-              <StatContainer>
-                <StatTitleContainer>
-                  <StatIcon src={SpeedIcon} />
-                  <CapitalizedSubtitle>Defesa</CapitalizedSubtitle>
-                </StatTitleContainer>
-                <CapitalizedSubtitle>
-                  {getPokemonStat(selectedPokemon, "defense")}
                 </CapitalizedSubtitle>
               </StatContainer>
 
