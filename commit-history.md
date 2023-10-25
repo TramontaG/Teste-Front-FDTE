@@ -46,3 +46,11 @@
 # [10/24/2023 22:24]
 
     - Minor refactors and adjustments in the layout
+
+# [10/25/2023 02:48]
+
+    - Created DTO and adapted the components to use it
+
+# [10/25/2023 16:39]
+
+    - Major refactor to facilitate the creation of new pokemons

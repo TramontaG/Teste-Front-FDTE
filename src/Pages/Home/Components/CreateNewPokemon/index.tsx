@@ -14,76 +14,63 @@ import {
   HorizontalContainer,
   SideBorderedDiv,
   HorizontalDivider,
-  AbilityText,
-  PokeballButton,
   PokeballHolder,
 } from "./styles";
 import { CenterContent } from "src/Components/CenterContent";
 import { MouseEventHandler } from "react";
 
 import CloseModalIconImage from "src/assets/images/close.png";
-import PokeballImage from "src/assets/images/pokeball.png";
+import AddSpriteImage from "src/assets/images/camera.png";
 
-import { PokemonTypeTag } from "../PokemonTypeTag";
-import { ForEach } from "src/Components/ForEach";
+import { Pokemon } from "src/Models/Pokemon";
+import { ActionButton } from "src/Components/ActionButton";
 
-/**
- * If the currentPokemon is undefined, the modal is set to closed.
- */
-export const PokeInfoModal = () => {
-  const {
-    currentPokemon: [currentPokemon, setCurrentPokemon],
-    addPokemon,
-  } = PokeContext.useContext();
+type CreatePokemonModalProps = {
+  pokemon: Pokemon;
+};
 
-  const closeModal = () => {
-    setCurrentPokemon(null);
-  };
-
+export const PokeInfoModal = ({ pokemon }: CreatePokemonModalProps) => {
   const avoidClosing: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
 
-  const capturePokemon = () => {
-    addPokemon(currentPokemon!);
-    closeModal();
-  };
-
-  if (!currentPokemon) {
+  if (!open) {
     return null;
   }
 
   return (
     <FloatingDiv>
-      <DarkenedBackground onClick={closeModal}>
+      <DarkenedBackground onClick={close}>
         <CenterContent>
           <PokeDetailsContainer onClick={avoidClosing}>
             <CloseModalContainer>
-              <CloseModalButton onClick={closeModal}>
+              <CloseModalButton onClick={close}>
                 <CloseModalIcon src={CloseModalIconImage} />
               </CloseModalButton>
             </CloseModalContainer>
             <PokemonSpriteHolder>
-              <PokemonSprite src={currentPokemon.sprites.front_default} />
+              <PokemonSprite
+                src={pokemon.sprites.front_default || AddSpriteImage}
+              />
             </PokemonSpriteHolder>
 
             <PokemonDataContainer>
-              <Title>{currentPokemon.name}</Title>
+              <Title>{pokemon.name}</Title>
               <HorizontalContainer>
                 <div>
                   <Subitlte>HP</Subitlte>
                   <Title>
-                    {currentPokemon.hp}/{currentPokemon.hp}
+                    {pokemon.hp}/{pokemon.hp}
                   </Title>
                 </div>
                 <SideBorderedDiv>
                   <Subitlte>ALTURA</Subitlte>
-                  <Title>{currentPokemon.height / 10} m</Title>
+                  <Title>{pokemon.height} m</Title>
                 </SideBorderedDiv>
 
                 <div>
                   <Subitlte>PESO</Subitlte>
-                  <Title>{currentPokemon.weight / 100} kg</Title>
+                  <Title>{pokemon.weight} kg</Title>
                 </div>
               </HorizontalContainer>
 
@@ -94,23 +81,9 @@ export const PokeInfoModal = () => {
               </HorizontalContainer>
 
               <HorizontalContainer>
-                <PokemonTypeTag type={currentPokemon.types[0]} />
-                <PokemonTypeTag type={currentPokemon.types[1]} />
-              </HorizontalContainer>
-
-              <HorizontalContainer>
                 <HorizontalDivider />
                 <Title>Habilidades</Title>
                 <HorizontalDivider />
-              </HorizontalContainer>
-
-              <HorizontalContainer>
-                <ForEach
-                  data={currentPokemon.abilities}
-                  render={(ability) => (
-                    <AbilityText key={ability}>{ability}</AbilityText>
-                  )}
-                />
               </HorizontalContainer>
 
               <PokeballHolder />
@@ -118,9 +91,7 @@ export const PokeInfoModal = () => {
           </PokeDetailsContainer>
 
           <HorizontalContainer>
-            <PokeballButton onClick={capturePokemon}>
-              <img src={PokeballImage} />
-            </PokeballButton>
+            <ActionButton>Criar Pokemon</ActionButton>
           </HorizontalContainer>
         </CenterContent>
       </DarkenedBackground>

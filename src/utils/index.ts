@@ -1,4 +1,4 @@
-import { PokemonFromApi, PokemonType } from "src/Models/Pokemon";
+import { Pokemon, PokemonFromApi, PokemonType } from "src/Models/Pokemon";
 
 export const getRandomIntBetween = (min: number, max: number) => {
     const range = max - min;
@@ -20,4 +20,21 @@ export const getPokemonTypes = (pokemon: PokemonFromApi): PokemonType[] => {
 
 export const getPokemonAbilities = (pokemon: PokemonFromApi) => {
     return pokemon.abilities.map(ability => ability.ability.name);
+}
+
+/**
+ * Used to get a new unique pokemon ID for when the user wants to
+ * create a brand new pokemon.
+ * @param pokeList 
+ * @returns 
+ */
+export const getNextPokemonId = (pokeList: Pokemon[]) => {
+    const allIds = pokeList.map(pokemon => pokemon.id);
+    const maxId = Math.max(...allIds);
+
+    if (maxId < 1000) {
+        return 1000;
+    }
+
+    return maxId + 1;
 }

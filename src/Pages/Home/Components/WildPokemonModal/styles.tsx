@@ -49,7 +49,7 @@ export const DashedTextContainer = styled.div`
   background-color: ${Colors.neutrals["600"]};
 `;
 
-export const CapitalizedSubtitle = styled.h5`
+export const AbilityText = styled.h5`
   color: ${Colors.neutrals["700"]};
   font-weight: bolder;
   text-align: center;
@@ -58,29 +58,8 @@ export const CapitalizedSubtitle = styled.h5`
   padding: 0.25rem;
 `;
 
-export const StatContainer = styled.div`
-  display: flex;
-  width: calc(100% - 3rem);
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1.5rem;
-`;
-
-export const StatTitleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0px;
-  padding: 0px;
-`;
-
-export const StatIcon = styled.img`
-  height: 100%;
-`;
-
-export const StatIconContainer = styled.div`
-  width: 20px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const PokeballButton = styled.button`
+  height: 100px;
+  background: none;
+  border: none;
 `;

@@ -3,7 +3,7 @@ import { HomeBackgroundImage } from "./styles";
 import { AshKetchum } from "./Components/AshKetchum";
 import { PokeContext } from "./Contexts/PokeContext";
 import { SideBar } from "./Components/Sidebar";
-import { PokeInfoModal } from "./Components/PokeInfoModal";
+import { WildPokemonModal } from "./Components/WildPokemonModal";
 import { CapturedPokemonInfoModal } from "./Components/CapturedPokeInfoModal";
 
 export const Home = () => {
@@ -11,7 +11,7 @@ export const Home = () => {
     <>
       <PokeContext.provider>
         <SideBar />
-        <PokeInfoModal />
+        <WildPokemonModal />
         <CapturedPokemonInfoModal />
         <CenterContent style={HomeBackgroundImage}>
           <AshKetchum />

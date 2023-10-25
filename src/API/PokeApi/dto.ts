@@ -6,8 +6,8 @@ export const PokeApiPokemon = (pokemon: PokemonFromApi): Pokemon => {
     return {
         id: pokemon.id,
         name: pokemon.name,
-        height: pokemon.height,
-        weight: pokemon.weight,
+        height: pokemon.height / 10,
+        weight: pokemon.weight / 100,
         sprites: pokemon.sprites,
         isOfficial: true,
 
