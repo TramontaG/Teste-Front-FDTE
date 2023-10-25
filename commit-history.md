@@ -54,3 +54,7 @@
 # [10/25/2023 16:39]
 
     - Major refactor to facilitate the creation of new pokemons
+
+# [10/25/2023 18:00]
+
+    - Created the feature that enables to add a new sprite for a user-created pokemon

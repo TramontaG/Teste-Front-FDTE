@@ -3,6 +3,7 @@ import { PokeContext } from "../../Contexts/PokeContext";
 import { ActionButton } from "src/Components/ActionButton";
 import { Modal } from "../Modal";
 import { OriginalPokemonInfo } from "../OriginalPokemonInfo";
+import { CreateOrEditPokemon } from "../CreateOrEditPokemon";
 
 /**
  * If the selected pokemon is undefined, the modal is set to closed.
@@ -40,6 +41,17 @@ export const CapturedPokemonInfoModal = () => {
       </Modal>
     );
   } else {
-    return null;
+    return (
+      <Modal
+        active={!!selectedPokemon}
+        closeModal={closeModal}
+        action={
+          <ActionButton onClick={releasePokemon}>Liberar Pokemon</ActionButton>
+        }
+        pokemonSprite={selectedPokemon.sprites.front_default}
+      >
+        <CreateOrEditPokemon pokemon={selectedPokemon} />
+      </Modal>
+    );
   }
 };

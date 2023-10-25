@@ -96,3 +96,32 @@ export const ActionContainer = styled.div`
 export const ActionHolder = styled.div`
   height: 100px;
 `;
+
+export const AddSpriteContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Plus = styled.img`
+  width: 15px;
+`;
+
+export const RoundActionButton = styled.button`
+  aspect-ratio: 1/1;
+  background-color: ${Colors.action.default};
+  border: solid ${Colors.neutrals["100"]} 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 9999px;
+  right: 15px;
+  top: 15px;
+`;
+
+export const WithoutDimensions = styled.div`
+  width: 0px;
+  height: 0px;
+  overflow: visible;
+`;

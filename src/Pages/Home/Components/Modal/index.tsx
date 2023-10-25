@@ -11,17 +11,29 @@ import {
   HorizontalContainer,
   ActionContainer,
   ActionHolder,
+  AddSpriteContainer,
+  RoundActionButton,
+  WithoutDimensions,
+  Plus,
 } from "./styles";
 import { CenterContent } from "src/Components/CenterContent";
-import { MouseEventHandler, PropsWithChildren } from "react";
+import { MouseEventHandler, PropsWithChildren, createRef } from "react";
 
 import CloseModalIconImage from "src/assets/images/close.png";
+import AddSpriteIcon from "src/assets/images/camera.png";
+import PlusIcon from "src/assets/images/plus.png";
+
+import { Render } from "src/Components/Render";
+import { HiddenForm } from "src/Components/ImageUpload";
+import { PokeContext } from "../../Contexts/PokeContext";
+import { Pokemon } from "src/Models/Pokemon";
 
 export type ModalProps = PropsWithChildren & {
   pokemonSprite: string;
   action: JSX.Element;
   active: boolean;
   closeModal: () => void;
+  setSprite?: () => void;
 };
 
 /**
@@ -38,9 +50,31 @@ export const Modal = ({
     e.stopPropagation();
   };
 
+  let hiddenForm = createRef<HTMLInputElement>();
+
   if (!active) {
     return null;
   }
+
+  const {
+    selectedPokemon: [pokemon, setPokemon],
+  } = PokeContext.useContext();
+
+  const setImage = (b64: string) => {
+    const updatedPokemon: Pokemon = {
+      ...pokemon!,
+      sprites: {
+        ...pokemon!.sprites,
+        front_default: `${b64}`,
+      },
+    };
+
+    setPokemon(updatedPokemon);
+  };
+
+  const readImage = () => {
+    hiddenForm.current?.click();
+  };
 
   return (
     <FloatingDiv>
@@ -53,7 +87,22 @@ export const Modal = ({
               </CloseModalButton>
             </CloseModalContainer>
             <PokemonSpriteHolder>
-              <PokemonSprite src={pokemonSprite} />
+              <Render when={!!pokemonSprite}>
+                <PokemonSprite src={pokemonSprite} />
+              </Render>
+
+              <Render when={!pokemonSprite}>
+                <AddSpriteContainer>
+                  <HiddenForm setImage={setImage} ref={hiddenForm} />
+
+                  <img src={AddSpriteIcon} />
+                  <WithoutDimensions>
+                    <RoundActionButton onClick={readImage}>
+                      <Plus src={PlusIcon} />
+                    </RoundActionButton>
+                  </WithoutDimensions>
+                </AddSpriteContainer>
+              </Render>
             </PokemonSpriteHolder>
 
             <PokemonDataContainer>
