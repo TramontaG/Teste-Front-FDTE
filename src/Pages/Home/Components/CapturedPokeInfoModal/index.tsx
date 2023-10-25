@@ -87,12 +87,12 @@ export const CapturedPokemonInfoModal = () => {
                   </Title>
                 </div>
                 <SideBorderedDiv>
-                  <Subitlte>Altura</Subitlte>
+                  <Subitlte>ALTURA</Subitlte>
                   <Title>{selectedPokemon.height / 10} m</Title>
                 </SideBorderedDiv>
 
                 <div>
-                  <Subitlte>Peso</Subitlte>
+                  <Subitlte>PESO</Subitlte>
                   <Title>{selectedPokemon.weight / 100} kg</Title>
                 </div>
               </HorizontalContainer>

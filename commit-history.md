@@ -42,3 +42,7 @@
 
     - Added a feature that enables to update the name of a pokemon
     - Fixed some small layout imperfections and misalignments
+
+# [10/24/2023 22:24]
+
+    - Minor refactors and adjustments in the layout

@@ -81,11 +81,12 @@ export const ActiveEditProperty = ({
 }: ActiveEditPropertyProps) => {
   const {
     selectedPokemon: [selectedPokemon, setSelectedPokemon],
-    pokeList,
     editPokemon,
   } = PokeContext.useContext();
 
-  const [newPropValue, setNewPropValue] = useState("");
+  const [newPropValue, setNewPropValue] = useState(
+    selectedPokemon![propertyToEdit] as string
+  );
 
   // Necessary to create the input element with the old name of the pokemon;
   let editPropInput: HTMLInputElement | null = null;

@@ -24,7 +24,6 @@ import { MouseEventHandler } from "react";
 import CloseModalIconImage from "src/assets/images/close.png";
 import PokeballImage from "src/assets/images/pokeball.png";
 
-import { Pokemon } from "src/Models/Pokemon";
 import { PokemonTypeTag } from "../PokemonTypeTag";
 import { ForEach } from "src/Components/ForEach";
 import { getPokemonStat } from "src/utils";
@@ -80,12 +79,12 @@ export const PokeInfoModal = () => {
                   </Title>
                 </div>
                 <SideBorderedDiv>
-                  <Subitlte>Altura</Subitlte>
+                  <Subitlte>ALTURA</Subitlte>
                   <Title>{currentPokemon.height / 10} m</Title>
                 </SideBorderedDiv>
 
                 <div>
-                  <Subitlte>Peso</Subitlte>
+                  <Subitlte>PESO</Subitlte>
                   <Title>{currentPokemon.weight / 100} kg</Title>
                 </div>
               </HorizontalContainer>
