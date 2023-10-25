@@ -1,6 +1,7 @@
 import axios from "axios";
-import { Pokemon } from "src/Models/Pokemon";
+import { PokemonFromApi } from "src/Models/Pokemon";
 import { getRandomIntBetween } from "src/utils";
+import { PokeApiPokemon } from "./dto";
 
 export const CreatePokeApi = () => {
     const PokeApi = axios.create({
@@ -9,8 +10,8 @@ export const CreatePokeApi = () => {
 
     const getRandomPokemon = async () => {
         const randomID = getRandomIntBetween(1, 807);
-        const { data } = await PokeApi.get<Pokemon>(`/pokemon/${randomID}`);
-        return data;
+        const { data } = await PokeApi.get<PokemonFromApi>(`/pokemon/${randomID}`);
+        return PokeApiPokemon(data);
     }
 
     return {

@@ -1,8 +1,7 @@
 import Colors from "src/StyleGuide/colors.json";
 import PokemonTypes from "src/strings/PokemonTypes.json";
 import { Tag } from "./styles";
-
-type PokemonType = keyof (typeof Colors)["types"];
+import { PokemonType } from "src/Models/Pokemon";
 
 export type PokemonTypeTagProps = {
   type?: PokemonType;
@@ -10,6 +9,7 @@ export type PokemonTypeTagProps = {
 
 export const PokemonTypeTag = ({ type }: PokemonTypeTagProps) => {
   if (!type) return null;
+
   const typeColor = Colors.types[type];
   const translatedType = PokemonTypes[type];
 

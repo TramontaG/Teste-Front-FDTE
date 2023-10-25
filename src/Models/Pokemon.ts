@@ -1,6 +1,9 @@
 import PokemonTypes from 'src/strings/PokemonTypes.json';
 
-export type NamedApiResource<Resources extends string = string> = {
+export type PokemonType = keyof typeof PokemonTypes;
+
+
+export type NamedApiResource<Resources = string> = {
     name: Resources,
     url: string,
 }
@@ -17,7 +20,7 @@ export type Ability = {
     slot: number;
 }
 
-export type Pokemon = {
+export type PokemonFromApi = {
     id: number,
     name: string,
     base_experience: number,
@@ -27,7 +30,7 @@ export type Pokemon = {
     weight: number,
     types: {
         slot: number,
-        type: NamedApiResource<keyof typeof PokemonTypes>,
+        type: NamedApiResource<PokemonType>
     }[];
     sprites: {
         front_default: string,
@@ -35,4 +38,37 @@ export type Pokemon = {
     },
     stats: PokemonStat[];
     abilities: Ability[];
+}
+
+export type Pokemon = {
+    id: number;
+    name: string;
+    /**
+     * If the pokemon comes from PokeApi. False when pokemon is created by the user
+     */
+    isOfficial: boolean;
+    /**
+     * In meters
+     */
+    height: number;
+    /**
+     * In Kilograms
+     */
+    weight: number;
+
+    types: PokemonType[];
+
+    sprites: {
+        front_default: string;
+        front_shiny: string;
+    }
+
+    abilities: string[];
+
+    hp: number;
+    attack: number;
+    defense: number;
+    special_deffense: number;
+    special_attack: number;
+    speed: number;
 }

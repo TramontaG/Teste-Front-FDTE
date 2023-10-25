@@ -33,8 +33,7 @@ import SwordIcon from "src/assets/images/sword.png";
 import { PokemonTypeTag } from "../PokemonTypeTag";
 import { ForEach } from "src/Components/ForEach";
 import { ActionButton } from "src/Components/ActionButton";
-import { getPokemonStat } from "src/utils";
-import { EditProperty } from "../EditStat";
+import { EditName } from "../EditName";
 
 /**
  * If the selected pokemon is undefined, the modal is set to closed.
@@ -77,13 +76,12 @@ export const CapturedPokemonInfoModal = () => {
             </PokemonSpriteHolder>
 
             <PokemonDataContainer>
-              <EditProperty property="name" />
+              <EditName />
               <HorizontalContainer>
                 <div>
                   <Subitlte>HP</Subitlte>
                   <Title>
-                    {getPokemonStat(selectedPokemon, "hp")}/
-                    {getPokemonStat(selectedPokemon, "hp")}
+                    {selectedPokemon.hp}/{selectedPokemon.hp}
                   </Title>
                 </div>
                 <SideBorderedDiv>
@@ -105,8 +103,8 @@ export const CapturedPokemonInfoModal = () => {
               </HorizontalContainer>
 
               <HorizontalContainer>
-                <PokemonTypeTag type={selectedPokemon.types[0]?.type.name} />
-                <PokemonTypeTag type={selectedPokemon.types[1]?.type.name} />
+                <PokemonTypeTag type={selectedPokemon.types[0]} />
+                <PokemonTypeTag type={selectedPokemon.types[1]} />
               </HorizontalContainer>
 
               <HorizontalContainer>
@@ -119,8 +117,8 @@ export const CapturedPokemonInfoModal = () => {
                 <ForEach
                   data={selectedPokemon.abilities}
                   render={(ability) => (
-                    <CapitalizedSubtitle key={ability.ability.name}>
-                      {ability.ability.name}
+                    <CapitalizedSubtitle key={ability}>
+                      {ability}
                     </CapitalizedSubtitle>
                   )}
                 />
@@ -140,7 +138,7 @@ export const CapturedPokemonInfoModal = () => {
                   <CapitalizedSubtitle>Defesa</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
-                  {getPokemonStat(selectedPokemon, "defense")}
+                  {selectedPokemon.defense}
                 </CapitalizedSubtitle>
               </StatContainer>
 
@@ -152,7 +150,7 @@ export const CapturedPokemonInfoModal = () => {
                   <CapitalizedSubtitle>Ataque</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
-                  {getPokemonStat(selectedPokemon, "attack")}
+                  {selectedPokemon.attack}
                 </CapitalizedSubtitle>
               </StatContainer>
 
@@ -164,7 +162,7 @@ export const CapturedPokemonInfoModal = () => {
                   <CapitalizedSubtitle>Defesa especial</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
-                  {getPokemonStat(selectedPokemon, "special-defense")}
+                  {selectedPokemon.special_deffense}
                 </CapitalizedSubtitle>
               </StatContainer>
 
@@ -176,7 +174,7 @@ export const CapturedPokemonInfoModal = () => {
                   <CapitalizedSubtitle>Ataque especial</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
-                  {getPokemonStat(selectedPokemon, "special-attack")}
+                  {selectedPokemon.special_attack}
                 </CapitalizedSubtitle>
               </StatContainer>
 
@@ -188,7 +186,7 @@ export const CapturedPokemonInfoModal = () => {
                   <CapitalizedSubtitle>Velocidade</CapitalizedSubtitle>
                 </StatTitleContainer>
                 <CapitalizedSubtitle>
-                  {getPokemonStat(selectedPokemon, "speed")}
+                  {selectedPokemon.speed}
                 </CapitalizedSubtitle>
               </StatContainer>
 

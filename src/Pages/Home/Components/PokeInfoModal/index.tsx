@@ -26,7 +26,6 @@ import PokeballImage from "src/assets/images/pokeball.png";
 
 import { PokemonTypeTag } from "../PokemonTypeTag";
 import { ForEach } from "src/Components/ForEach";
-import { getPokemonStat } from "src/utils";
 
 /**
  * If the currentPokemon is undefined, the modal is set to closed.
@@ -74,8 +73,7 @@ export const PokeInfoModal = () => {
                 <div>
                   <Subitlte>HP</Subitlte>
                   <Title>
-                    {getPokemonStat(currentPokemon, "hp")}/
-                    {getPokemonStat(currentPokemon, "hp")}
+                    {currentPokemon.hp}/{currentPokemon.hp}
                   </Title>
                 </div>
                 <SideBorderedDiv>
@@ -96,8 +94,8 @@ export const PokeInfoModal = () => {
               </HorizontalContainer>
 
               <HorizontalContainer>
-                <PokemonTypeTag type={currentPokemon.types[0]?.type.name} />
-                <PokemonTypeTag type={currentPokemon.types[1]?.type.name} />
+                <PokemonTypeTag type={currentPokemon.types[0]} />
+                <PokemonTypeTag type={currentPokemon.types[1]} />
               </HorizontalContainer>
 
               <HorizontalContainer>
@@ -110,9 +108,7 @@ export const PokeInfoModal = () => {
                 <ForEach
                   data={currentPokemon.abilities}
                   render={(ability) => (
-                    <AbilityText key={ability.ability.name}>
-                      {ability.ability.name}
-                    </AbilityText>
+                    <AbilityText key={ability}>{ability}</AbilityText>
                   )}
                 />
               </HorizontalContainer>

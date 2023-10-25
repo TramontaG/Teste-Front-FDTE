@@ -16,11 +16,7 @@ import CloseIcon from "src/assets/images/close.png";
 
 import { Pokemon } from "src/Models/Pokemon";
 
-type EditStatProps = {
-  property: keyof Pokemon;
-};
-
-export const EditProperty = ({ property }: EditStatProps) => {
+export const EditName = () => {
   const {
     selectedPokemon: [selectedPokemon],
   } = PokeContext.useContext();
@@ -35,16 +31,11 @@ export const EditProperty = ({ property }: EditStatProps) => {
   };
 
   if (editing) {
-    return (
-      <ActiveEditProperty
-        propertyToEdit={property as keyof Pokemon}
-        cancelEdit={cancelEdit}
-      />
-    );
+    return <ActiveEditName cancelEdit={cancelEdit} />;
   } else {
     return (
-      <DisplayProperty
-        property={selectedPokemon![property] as string}
+      <InactiveEditName
+        name={selectedPokemon!["name"]}
         startEditing={startEditing}
       />
     );
@@ -52,17 +43,17 @@ export const EditProperty = ({ property }: EditStatProps) => {
 };
 
 type DisplayPropertyProps = {
-  property: string;
+  name: string;
   startEditing: () => any;
 };
-export const DisplayProperty = ({
-  property,
+export const InactiveEditName = ({
+  name,
   startEditing,
 }: DisplayPropertyProps) => (
   <>
     <PropertyEditorContainer>
       <Title>
-        {property as string}
+        {name}
         <InvisibleButon onClick={startEditing}>
           <Icon src={EditIcon} />
         </InvisibleButon>
@@ -72,36 +63,30 @@ export const DisplayProperty = ({
 );
 
 type ActiveEditPropertyProps = {
-  propertyToEdit: keyof Pokemon;
   cancelEdit: () => void;
 };
-export const ActiveEditProperty = ({
-  propertyToEdit,
-  cancelEdit,
-}: ActiveEditPropertyProps) => {
+export const ActiveEditName = ({ cancelEdit }: ActiveEditPropertyProps) => {
   const {
     selectedPokemon: [selectedPokemon, setSelectedPokemon],
     editPokemon,
   } = PokeContext.useContext();
 
-  const [newPropValue, setNewPropValue] = useState(
-    selectedPokemon![propertyToEdit] as string
-  );
+  const [newName, setNewName] = useState(selectedPokemon!["name"]);
 
   // Necessary to create the input element with the old name of the pokemon;
   let editPropInput: HTMLInputElement | null = null;
   useEffect(() => {
-    editPropInput!.value = selectedPokemon![propertyToEdit] as string;
+    editPropInput!.value = newName;
   }, []);
 
-  const updatePropValue: FormEventHandler<HTMLInputElement> = (e) => {
-    setNewPropValue(editPropInput!.value);
+  const updatePropValue: FormEventHandler<HTMLInputElement> = () => {
+    setNewName(editPropInput!.value);
   };
 
   const editProp = () => {
     const newPokemon: Pokemon = {
       ...selectedPokemon!,
-      [propertyToEdit]: newPropValue,
+      name: newName,
     };
 
     editPokemon(selectedPokemon!.id, newPokemon);
