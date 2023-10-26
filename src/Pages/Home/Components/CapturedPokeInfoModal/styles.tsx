@@ -84,3 +84,11 @@ export const StatIconContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const TwoButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  top: -30px;
+`;

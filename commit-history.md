@@ -58,3 +58,7 @@
 # [10/25/2023 18:00]
 
     - Created the feature that enables to add a new sprite for a user-created pokemon
+
+# [10/26/2023 04:10]
+
+    - User can create and save pokemons with any desired stats

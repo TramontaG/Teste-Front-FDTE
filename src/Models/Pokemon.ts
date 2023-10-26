@@ -72,3 +72,6 @@ export type Pokemon = {
     special_attack: number;
     speed: number;
 }
+
+
+export type PokemonPropertyArray = "types" | "abilities";

@@ -34,6 +34,7 @@ export type ModalProps = PropsWithChildren & {
   active: boolean;
   closeModal: () => void;
   setSprite?: () => void;
+  doubleSpacing?: boolean;
 };
 
 /**
@@ -45,6 +46,7 @@ export const Modal = ({
   children,
   active,
   closeModal,
+  doubleSpacing = false,
 }: ModalProps) => {
   const avoidClosing: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -108,6 +110,9 @@ export const Modal = ({
             <PokemonDataContainer>
               {children}
               <ActionHolder />
+              <Render when={doubleSpacing}>
+                <ActionHolder />
+              </Render>
             </PokemonDataContainer>
           </PokeDetailsContainer>
           <HorizontalContainer>

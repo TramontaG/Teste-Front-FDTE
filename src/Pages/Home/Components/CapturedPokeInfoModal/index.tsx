@@ -4,6 +4,8 @@ import { ActionButton } from "src/Components/ActionButton";
 import { Modal } from "../Modal";
 import { OriginalPokemonInfo } from "../OriginalPokemonInfo";
 import { CreateOrEditPokemon } from "../CreateOrEditPokemon";
+import { Render } from "src/Components/Render";
+import { TwoButtonsContainer } from "./styles";
 
 /**
  * If the selected pokemon is undefined, the modal is set to closed.
@@ -12,6 +14,9 @@ export const CapturedPokemonInfoModal = () => {
   const {
     selectedPokemon: [selectedPokemon, setselectedPokemon],
     removePokemon,
+    addPokemon,
+    pokeList,
+    editPokemon,
   } = PokeContext.useContext();
 
   const closeModal = () => {
@@ -23,9 +28,22 @@ export const CapturedPokemonInfoModal = () => {
     closeModal();
   };
 
+  const savePokemon = () => {
+    addPokemon(selectedPokemon!);
+    closeModal();
+  };
+
+  const updatePokemon = () => {
+    editPokemon(selectedPokemon!.id, selectedPokemon!);
+    closeModal();
+  };
+
   if (!selectedPokemon) {
     return null;
   }
+
+  const isEditing = pokeList.map((p) => p.id).includes(selectedPokemon.id);
+  const buttonAction = isEditing ? updatePokemon : savePokemon;
 
   if (selectedPokemon.id < 1000) {
     return (
@@ -44,13 +62,21 @@ export const CapturedPokemonInfoModal = () => {
     return (
       <Modal
         active={!!selectedPokemon}
+        doubleSpacing
         closeModal={closeModal}
         action={
-          <ActionButton onClick={releasePokemon}>Liberar Pokemon</ActionButton>
+          <TwoButtonsContainer>
+            <ActionButton onClick={buttonAction}>Salvar Pokemon</ActionButton>
+            <Render when={isEditing}>
+              <ActionButton onClick={releasePokemon}>
+                Liberar Pokemon
+              </ActionButton>
+            </Render>
+          </TwoButtonsContainer>
         }
         pokemonSprite={selectedPokemon.sprites.front_default}
       >
-        <CreateOrEditPokemon pokemon={selectedPokemon} />
+        <CreateOrEditPokemon />
       </Modal>
     );
   }
