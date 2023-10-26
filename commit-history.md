@@ -68,3 +68,11 @@
 # [10/26/2023 03:51]
 
     - User can only create complete pokemons. If there is some info missing, the pokemon can't be created
+
+# [10/26/2023 04:01]
+
+    - Fix: Bad url was not resolving background image after build
+
+# [10/26/2023 14:31]
+
+    - Fix: It was possible to create new pokemon even when Ash already had 6 pokemons

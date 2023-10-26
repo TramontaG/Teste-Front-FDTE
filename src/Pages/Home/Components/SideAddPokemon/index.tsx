@@ -13,6 +13,10 @@ export const SideAddPokemon = () => {
 
   // Temporary function just to make sure the context is working :)
   const createNewPokemon = async () => {
+    if (pokeList.length >= 6) {
+      return;
+    }
+
     const newPokemon: Pokemon = {
       id: getNextPokemonId(pokeList),
       isOfficial: false,
