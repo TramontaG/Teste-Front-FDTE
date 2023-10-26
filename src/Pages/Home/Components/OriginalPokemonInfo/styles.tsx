@@ -24,11 +24,6 @@ export const HorizontalDivider = styled.div`
   background-color: ${Colors.neutrals["600"]};
 `;
 
-export const VerticalDivider = styled.div`
-  width: 1px;
-  background-color: ${Colors.neutrals["500"]};
-`;
-
 export const HorizontalContainer = styled.div`
   display: flex;
   width: calc(100% - 2rem);
@@ -41,12 +36,6 @@ export const SideBorderedDiv = styled.div`
   width: 33%;
   border-left: 1px solid ${Colors.neutrals["500"]};
   border-right: 1px solid ${Colors.neutrals["500"]};
-`;
-
-export const DashedTextContainer = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${Colors.neutrals["600"]};
 `;
 
 export const CapitalizedSubtitle = styled.h5`

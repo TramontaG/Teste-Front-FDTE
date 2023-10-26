@@ -8,12 +8,21 @@ import {
   Container,
   Dropdown,
   PokemonTypeOption,
+  LinedHeader,
+  StatTitleContainer,
+  StatIconContainer,
+  StatIcon,
+  CapitalizedSubtitle,
 } from "./styles";
 
 import PokemonTypes from "src/strings/PokemonTypes.json";
 import { ForEach } from "src/Components/ForEach";
 import { Render } from "src/Components/Render";
 import { useEffect } from "react";
+
+import ShiledIcon from "src/assets/images/shield.png";
+import SpeedIcon from "src/assets/images/speed.png";
+import SwordIcon from "src/assets/images/sword.png";
 
 export const CreateOrEditPokemon = () => {
   const {
@@ -59,6 +68,11 @@ export const CreateOrEditPokemon = () => {
   let ability1: HTMLInputElement | null = null;
   let ability2: HTMLInputElement | null = null;
   let ability3: HTMLInputElement | null = null;
+  let defenseInput: HTMLInputElement | null = null;
+  let attackInput: HTMLInputElement | null = null;
+  let specialDefenseInput: HTMLInputElement | null = null;
+  let specialAttackInput: HTMLInputElement | null = null;
+  let speedInput: HTMLInputElement | null = null;
 
   useEffect(() => {
     nameInput!.value = pokemon!.name;
@@ -71,6 +85,12 @@ export const CreateOrEditPokemon = () => {
     ability1!.value = pokemon!.abilities[1] || "";
     ability2!.value = pokemon!.abilities[2] || "";
     ability3!.value = pokemon!.abilities[3] || "";
+
+    defenseInput!.value = (pokemon!.defense || "").toString();
+    attackInput!.value = (pokemon!.attack || "").toString();
+    specialDefenseInput!.value = (pokemon!.special_deffense || "").toString();
+    specialAttackInput!.value = (pokemon!.special_attack || "").toString();
+    speedInput!.value = (pokemon!.speed || "").toString();
 
     // This has to be wrapped in an if statement because
     // the select for the second doesnt exists if the pokemon
@@ -115,7 +135,7 @@ export const CreateOrEditPokemon = () => {
 
       <HorizontalContainer>
         <HorizontalDivider />
-        <Label>Tipo</Label>
+        <LinedHeader>Tipo</LinedHeader>
         <HorizontalDivider />
       </HorizontalContainer>
 
@@ -140,7 +160,7 @@ export const CreateOrEditPokemon = () => {
       <Render when={pokemon!.types.length > 0}>
         <Dropdown
           ref={(ref) => (type1 = ref)}
-          onChange={addValueToPropertyArray("types", 0)}
+          onChange={addValueToPropertyArray("types", 1)}
         >
           <PokemonTypeOption disabled selected value="_default">
             Selecione o(s) tipo(s)
@@ -158,7 +178,7 @@ export const CreateOrEditPokemon = () => {
 
       <HorizontalContainer>
         <HorizontalDivider />
-        <Label>Habilidades</Label>
+        <LinedHeader>Habilidades</LinedHeader>
         <HorizontalDivider />
       </HorizontalContainer>
 
@@ -181,6 +201,72 @@ export const CreateOrEditPokemon = () => {
         placeholder="Habilidade 4"
         ref={(ref) => (ability3 = ref)}
         onChange={addValueToPropertyArray("abilities", 4)}
+      />
+
+      <HorizontalContainer>
+        <HorizontalDivider />
+        <LinedHeader>Estatísticas</LinedHeader>
+        <HorizontalDivider />
+      </HorizontalContainer>
+
+      <StatTitleContainer>
+        <StatIconContainer>
+          <StatIcon src={ShiledIcon} />
+        </StatIconContainer>
+        <CapitalizedSubtitle>Defesa</CapitalizedSubtitle>
+      </StatTitleContainer>
+      <TextInput
+        placeholder="00"
+        ref={(ref) => (defenseInput = ref)}
+        onChange={updateProperty("defense")}
+      />
+
+      <StatTitleContainer>
+        <StatIconContainer>
+          <StatIcon src={SwordIcon} />
+        </StatIconContainer>
+        <CapitalizedSubtitle>Ataque</CapitalizedSubtitle>
+      </StatTitleContainer>
+      <TextInput
+        placeholder="00"
+        ref={(ref) => (attackInput = ref)}
+        onChange={updateProperty("attack")}
+      />
+
+      <StatTitleContainer>
+        <StatIconContainer>
+          <StatIcon src={ShiledIcon} />
+        </StatIconContainer>
+        <CapitalizedSubtitle>Defesa Especial</CapitalizedSubtitle>
+      </StatTitleContainer>
+      <TextInput
+        placeholder="00"
+        ref={(ref) => (specialDefenseInput = ref)}
+        onChange={updateProperty("special_deffense")}
+      />
+
+      <StatTitleContainer>
+        <StatIconContainer>
+          <StatIcon src={SwordIcon} />
+        </StatIconContainer>
+        <CapitalizedSubtitle>Ataque Especial</CapitalizedSubtitle>
+      </StatTitleContainer>
+      <TextInput
+        placeholder="00"
+        ref={(ref) => (specialAttackInput = ref)}
+        onChange={updateProperty("special_attack")}
+      />
+
+      <StatTitleContainer>
+        <StatIconContainer>
+          <StatIcon src={SpeedIcon} />
+        </StatIconContainer>
+        <CapitalizedSubtitle>Velocidade</CapitalizedSubtitle>
+      </StatTitleContainer>
+      <TextInput
+        placeholder="00"
+        ref={(ref) => (speedInput = ref)}
+        onChange={updateProperty("speed")}
       />
     </Container>
   );

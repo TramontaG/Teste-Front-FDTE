@@ -13,16 +13,17 @@ export const HorizontalDivider = styled.div`
   background-color: ${Colors.neutrals["500"]};
 `;
 
+export const LinedHeader = styled.span`
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 0.8rem;
+`;
+
 export const Label = styled.span`
   text-transform: uppercase;
   font-weight: bolder;
   font-size: 0.8rem;
   margin-top: 20px;
-`;
-
-export const VerticalDivider = styled.div`
-  width: 1px;
-  background-color: ${Colors.neutrals["500"]};
 `;
 
 export const HorizontalContainer = styled.div`
@@ -32,21 +33,6 @@ export const HorizontalContainer = styled.div`
   align-items: center;
   padding: 1rem 0;
   gap: 10px;
-`;
-
-export const DashedTextContainer = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${Colors.neutrals["600"]};
-`;
-
-export const AbilityText = styled.h5`
-  color: ${Colors.neutrals["700"]};
-  font-weight: bolder;
-  text-align: center;
-  text-transform: uppercase;
-  margin: 0.25rem;
-  padding: 0.25rem;
 `;
 
 export const TextInput = styled.input`
@@ -64,7 +50,6 @@ export const TextInput = styled.input`
     font-weight: bold;
   }
 `;
-
 export const Dropdown = styled.select`
   background-color: ${Colors.neutrals["100"]};
   border: 2px solid ${Colors.neutrals["400"]};
@@ -80,4 +65,33 @@ export const Dropdown = styled.select`
 export const PokemonTypeOption = styled.option`
   color: ${Colors.neutrals["800"]};
   font-weight: bold;
+`;
+
+export const StatTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+`;
+
+export const StatIcon = styled.img`
+  height: 100%;
+`;
+
+export const StatIconContainer = styled.div`
+  width: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CapitalizedSubtitle = styled.h5`
+  color: ${Colors.neutrals["700"]};
+  font-weight: bolder;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0.25rem;
+  padding: 0.25rem;
 `;

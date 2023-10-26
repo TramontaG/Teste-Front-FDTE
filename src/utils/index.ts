@@ -38,3 +38,22 @@ export const getNextPokemonId = (pokeList: Pokemon[]) => {
 
     return maxId + 1;
 }
+
+export const pokemonIsComplete = (pokemon: Pokemon) => {
+    return (
+        !!pokemon.name &&
+        !!pokemon.hp &&
+        !!pokemon.weight &&
+        !!pokemon.height &&
+        !!pokemon.sprites.front_default &&
+
+        !!pokemon.attack &&
+        !!pokemon.defense &&
+        !!pokemon.special_attack &&
+        !!pokemon.special_deffense &&
+        !!pokemon.speed &&
+
+        !!pokemon.abilities.length &&
+        !!pokemon.types.length
+    )
+}

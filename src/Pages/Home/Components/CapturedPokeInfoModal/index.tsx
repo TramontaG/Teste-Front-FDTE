@@ -6,6 +6,7 @@ import { OriginalPokemonInfo } from "../OriginalPokemonInfo";
 import { CreateOrEditPokemon } from "../CreateOrEditPokemon";
 import { Render } from "src/Components/Render";
 import { TwoButtonsContainer } from "./styles";
+import { pokemonIsComplete } from "src/utils";
 
 /**
  * If the selected pokemon is undefined, the modal is set to closed.
@@ -28,14 +29,22 @@ export const CapturedPokemonInfoModal = () => {
     closeModal();
   };
 
-  const savePokemon = () => {
-    addPokemon(selectedPokemon!);
-    closeModal();
+  const savePokemon: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (pokemonIsComplete(selectedPokemon!)) {
+      addPokemon(selectedPokemon!);
+      closeModal();
+    } else {
+      e.stopPropagation();
+    }
   };
 
-  const updatePokemon = () => {
-    editPokemon(selectedPokemon!.id, selectedPokemon!);
-    closeModal();
+  const updatePokemon: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (pokemonIsComplete(selectedPokemon!)) {
+      editPokemon(selectedPokemon!.id, selectedPokemon!);
+      closeModal();
+    } else {
+      e.stopPropagation();
+    }
   };
 
   if (!selectedPokemon) {
@@ -62,10 +71,10 @@ export const CapturedPokemonInfoModal = () => {
     return (
       <Modal
         active={!!selectedPokemon}
-        doubleSpacing
+        doubleSpacing={isEditing}
         closeModal={closeModal}
         action={
-          <TwoButtonsContainer>
+          <TwoButtonsContainer isEditing={isEditing}>
             <ActionButton onClick={buttonAction}>Salvar Pokemon</ActionButton>
             <Render when={isEditing}>
               <ActionButton onClick={releasePokemon}>

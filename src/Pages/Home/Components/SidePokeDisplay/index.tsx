@@ -17,7 +17,7 @@ export const SidePokeDisplay = ({ pokemon }: SidePokeDisplayProps) => {
 
 export const PopulatedPokeDisplay = ({ pokemon }: { pokemon: Pokemon }) => {
   const {
-    selectedPokemon: [selectedPokemon, setSelectedPokemon],
+    selectedPokemon: [, setSelectedPokemon],
   } = PokeContext.useContext();
 
   const selectPokemon = () => {

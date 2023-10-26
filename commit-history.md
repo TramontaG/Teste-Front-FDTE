@@ -59,6 +59,12 @@
 
     - Created the feature that enables to add a new sprite for a user-created pokemon
 
-# [10/26/2023 04:10]
+## Deadline of the project. Everything beyond this point was made after the delivery of the test
+
+# [10/26/2023 03:10]
 
     - User can create and save pokemons with any desired stats
+
+# [10/26/2023 03:51]
+
+    - User can only create complete pokemons. If there is some info missing, the pokemon can't be created
